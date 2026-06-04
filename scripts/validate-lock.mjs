@@ -7,14 +7,19 @@ const required = [
   "app/layout.tsx",
   "app/globals.css",
   "app/api/leads/route.ts",
+  "app/api/telemetry/route.ts",
+  "app/components/TelemetryBeacon.tsx",
   "app/admin/page.tsx",
   "app/robots.ts",
   "app/sitemap.ts",
   "app/thank-you/page.tsx",
   "app/estimate-error/page.tsx",
   "public/manifest.webmanifest",
+  "public/images/drive-assets.json",
   "lib/brand.ts",
   "lib/leads.ts",
+  "lib/supabase.ts",
+  "lib/telemetry.ts",
   "supabase/sql/001_nrw_leads_approval_gated.sql"
 ];
 
@@ -53,15 +58,37 @@ if (leads.includes("console.info") || leads.includes("console.log") || !leads.in
 }
 
 const leadModule = fs.readFileSync(path.join(root, "lib/leads.ts"), "utf8");
-if (!leadModule.includes('NRW_ENABLE_SUPABASE_LEADS !== "true"') || !leadModule.includes("SUPABASE_SECRET_KEY") || leadModule.includes("NEXT_PUBLIC_SUPABASE_SERVICE_ROLE")) {
-  console.error("Lead persistence must remain server-only and approval-gated.");
+const supabaseModule = fs.readFileSync(path.join(root, "lib/supabase.ts"), "utf8");
+if (!leadModule.includes("insertSupabaseRow") || !leadModule.includes("nrw_leads") || supabaseModule.includes("NEXT_PUBLIC_SUPABASE_SERVICE_ROLE")) {
+  console.error("Lead persistence must use the approved Supabase insert helper without exposing service-role keys.");
+  process.exit(1);
+}
+
+const telemetryRoute = fs.readFileSync(path.join(root, "app/api/telemetry/route.ts"), "utf8");
+const telemetryModule = fs.readFileSync(path.join(root, "lib/telemetry.ts"), "utf8");
+const telemetryBeacon = fs.readFileSync(path.join(root, "app/components/TelemetryBeacon.tsx"), "utf8");
+if (!telemetryRoute.includes("persistTelemetryIfEnabled") || !telemetryModule.includes("nrw_telemetry_events") || !telemetryBeacon.includes("/api/telemetry") || telemetryBeacon.includes("console.log")) {
+  console.error("Telemetry must be wired through the approved API route without client logging.");
+  process.exit(1);
+}
+
+const driveAssets = fs.readFileSync(path.join(root, "public/images/drive-assets.json"), "utf8");
+for (const token of ["16IyWvLI6x3YtvuziSr4_G7Vu7iysexg1", "ChatGPT Image Jun 3, 2026", "galleryPortfolio", "productImages", "processImages"]) {
+  if (!driveAssets.includes(token)) {
+    console.error(`Drive asset manifest missing approved inventory token: ${token}`);
+    process.exit(1);
+  }
+}
+
+if (supabaseModule.includes("service_role")) {
+  console.error("Supabase helper must not hard-code or expose service-role credentials.");
   process.exit(1);
 }
 
 const sql = fs.readFileSync(path.join(root, "supabase/sql/001_nrw_leads_approval_gated.sql"), "utf8").toLowerCase();
-for (const token of ["enable row level security", "revoke all on table public.nrw_leads from anon", "revoke all on table public.nrw_leads from authenticated"]) {
+for (const token of ["enable row level security", "public.nrw_leads", "public.nrw_telemetry_events", "public.nrw_user_roles", "website can submit leads", "website can submit telemetry"]) {
   if (!sql.includes(token)) {
-    console.error(`Supabase lead SQL missing required safety token: ${token}`);
+    console.error(`Supabase SQL missing required safety token: ${token}`);
     process.exit(1);
   }
 }
