@@ -1,4 +1,5 @@
 import { brand, scoreLead } from "@/lib/brand";
+import { insertSupabaseRow } from "@/lib/supabase";
 
 export type LeadScore = "hot" | "warm" | "cold";
 
@@ -48,33 +49,17 @@ export function buildLeadPayload(formData: FormData): LeadPayload {
 }
 
 export async function persistLeadIfEnabled(payload: LeadPayload): Promise<LeadPersistenceResult> {
-  if (process.env.NRW_ENABLE_SUPABASE_LEADS !== "true") {
+  if (process.env.NRW_ENABLE_SUPABASE_LEADS === "false") {
     return { ok: true, mode: "preview" };
   }
 
-  const supabaseUrl = process.env.SUPABASE_URL;
-  const supabaseSecret = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-  if (!supabaseUrl || !supabaseSecret) {
-    return { ok: false, mode: "supabase", error: "Supabase lead persistence is enabled but server credentials are missing." };
-  }
-
-  const response = await fetch(`${supabaseUrl.replace(/\/$/, "")}/rest/v1/nrw_leads`, {
-    method: "POST",
-    headers: {
-      apikey: supabaseSecret,
-      Authorization: `Bearer ${supabaseSecret}`,
-      "Content-Type": "application/json",
-      Prefer: "return=minimal"
-    },
-    body: JSON.stringify({
-      ...payload,
-      notification_destination: brand.leadEmail
-    })
+  const result = await insertSupabaseRow("nrw_leads", {
+    ...payload,
+    notification_destination: brand.leadEmail
   });
 
-  if (!response.ok) {
-    return { ok: false, mode: "supabase", error: `Supabase lead insert failed with status ${response.status}.` };
+  if (!result.ok) {
+    return { ok: false, mode: "supabase", error: result.error };
   }
 
   return { ok: true, mode: "supabase" };
