@@ -1,20 +1,22 @@
 import { brand } from "@/lib/brand";
 
+const approvedSurfaceImage = brand.assets.brandPackBoard;
+
 const processSteps = [
-  { title: "Sign Up & Schedule Job", image: "/images/countertop.svg", points: ["Free estimate", "Floor visualizer", "Digital contract"] },
-  { title: "Prep Work", image: "/images/polished-concrete.svg", points: ["Grind and clean concrete", "Crack repair and patching", "Dust-free finish"] },
-  { title: "Base Coat", image: "/images/concrete-stain.svg", points: ["Moisture tolerant", "Anti-crack membrane", "Flexible and durable"] },
-  { title: "Beauty Coat", image: "/images/resin-surface-hero.svg", points: ["Flake, metallic, or stain", "Faux concrete stains", "Natural concrete look"] },
-  { title: "Topcoat Finish", image: "/images/flake-floor.svg", points: ["Satin or high gloss", "Maximum durability", "Final clean walkthrough"] },
-  { title: "Final Inspection", image: "/images/river-table.svg", points: ["Quality inspection", "Touch-up if needed", "100% satisfaction"] }
+  { title: "Sign Up & Schedule Job", image: approvedSurfaceImage, points: ["Free estimate", "Floor visualizer", "Digital contract"] },
+  { title: "Prep Work", image: approvedSurfaceImage, points: ["Grind and clean concrete", "Crack repair and patching", "Dust-free finish"] },
+  { title: "Base Coat", image: approvedSurfaceImage, points: ["Moisture tolerant", "Anti-crack membrane", "Flexible and durable"] },
+  { title: "Beauty Coat", image: approvedSurfaceImage, points: ["Flake, metallic, or stain", "Faux concrete stains", "Natural concrete look"] },
+  { title: "Topcoat Finish", image: approvedSurfaceImage, points: ["Satin or high gloss", "Maximum durability", "Final clean walkthrough"] },
+  { title: "Final Inspection", image: approvedSurfaceImage, points: ["Quality inspection", "Touch-up if needed", "100% satisfaction"] }
 ];
 
 const colorChips = ["Domino", "Nightfall", "Gravel", "Tuxedo", "Shoreline", "Wombat", "Saddle Tan", "Cabin Fever", "Outback", "Biscuit", "Custom Blend", "Chestnut"];
 const products = [
-  { name: "Epoxy Floor Kit", price: "$249.99", image: "/images/concrete-stain.svg" },
-  { name: "Metallic Epoxy Kit", price: "$299.99", image: "/images/resin-surface-hero.svg" },
-  { name: "Flake Broadcast Kit", price: "$99.99", image: "/images/flake-floor.svg" },
-  { name: "Polyaspartic Topcoat", price: "$129.99", image: "/images/polished-concrete.svg" }
+  { name: "Epoxy Floor Kit", price: "$249.99", image: approvedSurfaceImage },
+  { name: "Metallic Epoxy Kit", price: "$299.99", image: approvedSurfaceImage },
+  { name: "Flake Broadcast Kit", price: "$99.99", image: approvedSurfaceImage },
+  { name: "Polyaspartic Topcoat", price: "$129.99", image: approvedSurfaceImage }
 ];
 const trustItems = ["Navy Seal Museum", "Johnson & Johnson", "Walgreens", "Public Storage"];
 const iconBar = ["Premium Materials", "Expert Craftsmanship", "Built To Last", "Locally Owned", "Industry Certified", "Satisfaction Guaranteed", "20+ Years Experience"];
@@ -24,7 +26,7 @@ export default function HomePage() {
     <main className="mockup-shell">
       <TopBar />
       <Navigation />
-      <section className="mock-hero" aria-label="Nashville Resin Worx estimate hero">
+      <section className="mock-hero" style={{ backgroundImage: brand.assets.heroBackground }} aria-label="Nashville Resin Worx estimate hero">
         <div className="hero-stage">
           <div className="hero-left">
             <p className="brand-services">Epoxy • Wood • Metal • Concrete • Stone</p>
@@ -81,7 +83,7 @@ export default function HomePage() {
         </div>
         <div className="proof-panel">
           <h2><span>15+</span> Years Of Experience</h2>
-          <p>We have completed hundreds of residential, commercial, and industrial projects across the Ozarks and beyond.</p>
+          <p>We have completed hundreds of residential, commercial, and industrial projects across Nashville and beyond.</p>
           <ul><li>Licensed & Insured</li><li>Industry Certified</li><li>Top Quality Materials</li><li>Satisfaction Guaranteed</li></ul>
           <div className="experience-seal">15+<small>Years Experience</small></div>
           <h3>Industry Certifications</h3>
@@ -107,10 +109,19 @@ function TopBar() {
   return <div className="top-bar"><span>⌖ Nashville, Tennessee</span><a href="tel:16151234567">(615) 123-4567</a><a href={`mailto:${brand.leadEmail}`}>{brand.leadEmail}</a><span className="socials">● ● ● ●</span></div>;
 }
 
+function LogoLockup() {
+  return (
+    <a className="logo-lockup" href="/">
+      <span className="logo-emblem"><img src={brand.assets.logo} alt="Nashville Resin Worx logo" /></span>
+      <span>Nashville<strong>Resin Worx</strong><small>{brand.tagline}</small></span>
+    </a>
+  );
+}
+
 function Navigation() {
   return (
     <header className="mock-nav">
-      <a className="logo-lockup" href="/"><span className="logo-emblem">NRW</span><span>Nashville<strong>Resin Worx</strong><small>{brand.tagline}</small></span></a>
+      <LogoLockup />
       <nav aria-label="Main navigation"><a href="/">Home</a><a href="/services">Services</a><a href="#process">Our Process</a><a href="/gallery">Gallery</a><a href="/products">Products</a><a href="/color-charts">Color Charts</a><a href="/about">About Us</a><a href="/contact">Contact</a></nav>
       <a className="nav-cta" href="#estimate">{brand.cta}</a>
     </header>
@@ -141,7 +152,7 @@ function Qr() {
 function Footer() {
   return (
     <footer className="mock-footer">
-      <div className="footer-brand"><a className="logo-lockup" href="/"><span className="logo-emblem">NRW</span><span>Nashville<strong>Resin Worx</strong><small>{brand.tagline}</small></span></a><p>Transforming concrete, wood, and metal into stunning durable surfaces built for life.</p></div>
+      <div className="footer-brand"><LogoLockup /><p>Transforming concrete, wood, and metal into stunning durable surfaces built for life.</p></div>
       <div><h3>Services</h3>{brand.services.slice(0, 6).map((service) => <a href="/services" key={service}>{service}</a>)}</div>
       <div><h3>Quick Links</h3><a href="tel:16151234567">(615) 123-4567</a><a href={`mailto:${brand.leadEmail}`}>{brand.leadEmail}</a><a href="#estimate">{brand.cta}</a></div>
       <div><h3>The Nashville Resin Worx App</h3><div className="footer-icons"><span>Track Progress</span><span>Send Messages</span><span>Pay Securely</span><span>Care Guides</span></div></div>
