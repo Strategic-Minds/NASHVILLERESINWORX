@@ -1,6 +1,7 @@
 export const brand = {
   name: "Nashville Resin Worx",
   tagline: "Epoxy | Wood | Metal | Concrete | Stone",
+  siteUrl: "https://nashvilleresinworx-strategic-minds-advisory.vercel.app",
   cta: "Get My Free Estimate",
   leadEmail: "info@epoxywillchangeyourlife.com",
   visualizerUrl: "https://torginol.com/design",
