@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { scoreLead } from "@/lib/brand";
+import { buildLeadPayload, persistLeadIfEnabled } from "@/lib/leads";
 
 const requiredFields = ["firstName", "lastName", "phone", "email", "projectType"];
 const rateWindowMs = 60_000;
@@ -14,7 +14,7 @@ export async function POST(request: Request) {
 
   const formData = await request.formData();
   if (String(formData.get("website") || "").trim()) {
-    return respond(request, { ok: true, leadScore: "cold" }, 303, "/thank-you");
+    return respond(request, { ok: true, leadScore: "cold" }, 200, "/thank-you");
   }
 
   const missing = requiredFields.filter((field) => !String(formData.get(field) || "").trim());
@@ -32,13 +32,13 @@ export async function POST(request: Request) {
     return respond(request, { ok: false, error: "A valid phone number is required." }, 400);
   }
 
-  const leadScore = scoreLead(
-    String(formData.get("timeline") || ""),
-    Boolean(formData.get("photos")),
-    Boolean(formData.get("budgetRange"))
-  );
+  const lead = buildLeadPayload(formData);
+  const persistence = await persistLeadIfEnabled(lead);
+  if (!persistence.ok) {
+    return respond(request, { ok: false, error: "Estimate request could not be saved." }, 502, "/estimate-error");
+  }
 
-  return respond(request, { ok: true, message: "Estimate request received.", leadScore }, 303, "/thank-you");
+  return respond(request, { ok: true, message: "Estimate request received.", leadScore: lead.lead_score }, 200, "/thank-you");
 }
 
 function getClientKey(request: Request) {
@@ -60,8 +60,8 @@ function isRateLimited(clientKey: string) {
 function respond(request: Request, body: Record<string, unknown>, status: number, redirectPath?: string) {
   const wantsJson = request.headers.get("accept")?.includes("application/json");
   if (redirectPath && !wantsJson) {
-    return NextResponse.redirect(new URL(redirectPath, request.url), { status });
+    return NextResponse.redirect(new URL(redirectPath, request.url), { status: 303 });
   }
 
-  return NextResponse.json(body, { status: redirectPath ? 200 : status });
+  return NextResponse.json(body, { status });
 }
