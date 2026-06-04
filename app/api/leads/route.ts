@@ -1,32 +1,67 @@
 import { NextResponse } from "next/server";
-import { brand, scoreLead } from "@/lib/brand";
+import { scoreLead } from "@/lib/brand";
 
 const requiredFields = ["firstName", "lastName", "phone", "email", "projectType"];
+const rateWindowMs = 60_000;
+const maxRequestsPerWindow = 5;
+const recentRequests = new Map<string, { count: number; resetAt: number }>();
 
 export async function POST(request: Request) {
-  const formData = await request.formData();
-  const missing = requiredFields.filter((field) => !String(formData.get(field) || "").trim());
+  const clientKey = getClientKey(request);
+  if (isRateLimited(clientKey)) {
+    return respond(request, { ok: false, error: "Too many estimate attempts. Please try again in a minute." }, 429);
+  }
 
+  const formData = await request.formData();
+  if (String(formData.get("website") || "").trim()) {
+    return respond(request, { ok: true, leadScore: "cold" }, 303, "/thank-you");
+  }
+
+  const missing = requiredFields.filter((field) => !String(formData.get(field) || "").trim());
   if (missing.length > 0) {
-    return NextResponse.json({ ok: false, error: "Missing required lead fields.", missing }, { status: 400 });
+    return respond(request, { ok: false, error: "Missing required lead fields.", missing }, 400);
   }
 
   const email = String(formData.get("email") || "").trim();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return NextResponse.json({ ok: false, error: "A valid email is required." }, { status: 400 });
+    return respond(request, { ok: false, error: "A valid email is required." }, 400);
   }
 
-  const lead = {
-    projectType: String(formData.get("projectType") || ""),
-    timeline: String(formData.get("timeline") || ""),
-    budgetRange: String(formData.get("budgetRange") || ""),
-    destination: brand.leadEmail,
-    score: scoreLead(String(formData.get("timeline") || ""), Boolean(formData.get("photos")), Boolean(formData.get("budgetRange")))
-  };
+  const phone = String(formData.get("phone") || "").replace(/[^0-9+]/g, "");
+  if (phone.length < 7) {
+    return respond(request, { ok: false, error: "A valid phone number is required." }, 400);
+  }
 
-  // Production notification/storage remains approval-gated until env vars,
-  // provider credentials, spam controls, and data retention rules are verified.
-  console.info("NRW_LEAD_INTAKE_DRAFT", lead);
+  const leadScore = scoreLead(
+    String(formData.get("timeline") || ""),
+    Boolean(formData.get("photos")),
+    Boolean(formData.get("budgetRange"))
+  );
 
-  return NextResponse.json({ ok: true, message: "Estimate request received.", leadScore: lead.score });
+  return respond(request, { ok: true, message: "Estimate request received.", leadScore }, 303, "/thank-you");
+}
+
+function getClientKey(request: Request) {
+  return request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "anonymous";
+}
+
+function isRateLimited(clientKey: string) {
+  const now = Date.now();
+  const current = recentRequests.get(clientKey);
+  if (!current || current.resetAt <= now) {
+    recentRequests.set(clientKey, { count: 1, resetAt: now + rateWindowMs });
+    return false;
+  }
+
+  current.count += 1;
+  return current.count > maxRequestsPerWindow;
+}
+
+function respond(request: Request, body: Record<string, unknown>, status: number, redirectPath?: string) {
+  const wantsJson = request.headers.get("accept")?.includes("application/json");
+  if (redirectPath && !wantsJson) {
+    return NextResponse.redirect(new URL(redirectPath, request.url), { status });
+  }
+
+  return NextResponse.json(body, { status: redirectPath ? 200 : status });
 }
