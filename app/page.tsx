@@ -34,6 +34,7 @@ function Navigation() {
 function EstimateForm() {
   return (
     <form className="estimate-form" action="/api/leads" method="post">
+      <label className="honeypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
       <div className="form-grid"><label>First Name<input name="firstName" required autoComplete="given-name" /></label><label>Last Name<input name="lastName" required autoComplete="family-name" /></label></div>
       <div className="form-grid"><label>Phone<input name="phone" required autoComplete="tel" /></label><label>Email<input name="email" type="email" required autoComplete="email" /></label></div>
       <label>Project Type<select name="projectType" required defaultValue=""><option value="" disabled>Select a surface</option>{brand.services.map((service) => <option key={service}>{service}</option>)}</select></label>
