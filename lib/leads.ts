@@ -28,10 +28,11 @@ export type LeadPersistenceResult =
 export function buildLeadPayload(formData: FormData): LeadPayload {
   const timeline = cleanOptional(formData.get("timeline"));
   const budgetRange = cleanOptional(formData.get("budgetRange"));
+  const parsedName = parseName(formData);
 
   return {
-    first_name: cleanRequired(formData.get("firstName")),
-    last_name: cleanRequired(formData.get("lastName")),
+    first_name: parsedName.firstName,
+    last_name: parsedName.lastName,
     phone: cleanRequired(formData.get("phone")).replace(/[^0-9+]/g, ""),
     email: cleanRequired(formData.get("email")).toLowerCase(),
     project_type: cleanRequired(formData.get("projectType")),
@@ -72,4 +73,22 @@ function cleanRequired(value: FormDataEntryValue | null) {
 function cleanOptional(value: FormDataEntryValue | null) {
   const cleaned = cleanRequired(value);
   return cleaned.length ? cleaned : null;
+}
+
+function parseName(formData: FormData) {
+  const firstName = cleanRequired(formData.get("firstName"));
+  const lastName = cleanRequired(formData.get("lastName"));
+  if (firstName || lastName) {
+    return {
+      firstName,
+      lastName: lastName || "Unknown"
+    };
+  }
+
+  const fullName = cleanRequired(formData.get("fullName"));
+  const [first, ...rest] = fullName.split(/\s+/);
+  return {
+    firstName: first || "Unknown",
+    lastName: rest.join(" ") || "Unknown"
+  };
 }
