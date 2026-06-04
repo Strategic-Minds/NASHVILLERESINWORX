@@ -3,6 +3,7 @@ import "./globals.css";
 import { brand } from "@/lib/brand";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || brand.siteUrl),
   title: "Nashville Resin Worx | Premium Epoxy, Concrete, Countertops & River Tables",
   description:
     "Premium custom decorative surfaces in Nashville: metallic epoxy, flake systems, polished concrete, stained concrete, countertops, river tables, stone surfaces, and decorative concrete.",
