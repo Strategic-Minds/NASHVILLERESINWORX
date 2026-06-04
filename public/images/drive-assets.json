@@ -1,0 +1,16 @@
+{
+  "approvedVisualSource": {
+    "title": "ChatGPT Image Jun 3, 2026, 11_07_35 PM.png",
+    "driveFileId": "16IyWvLI6x3YtvuziSr4_G7Vu7iysexg1",
+    "mimeType": "image/png",
+    "role": "approved visual mockup source",
+    "status": "approved by user on 2026-06-04 for production lock"
+  },
+  "approvedFolders": {
+    "logosIconsFonts": "empty at latest inspection",
+    "galleryPortfolio": "empty at latest inspection",
+    "productImages": "empty at latest inspection",
+    "processImages": "empty at latest inspection"
+  },
+  "fallbackPolicy": "Use locked SVG material assets until approved project photos/logos are added to the canonical folders."
+}
