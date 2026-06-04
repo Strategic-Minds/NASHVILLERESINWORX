@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: "Nashville Resin Worx",
     description: "Premium custom epoxy, concrete, wood, metal, and stone surfaces.",
     type: "website",
-    images: ["/images/resin-surface-hero.svg"]
+    images: [brand.assets.brandPackBoard]
   }
 };
 
