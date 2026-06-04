@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { buildLeadPayload, persistLeadIfEnabled } from "@/lib/leads";
 
-const requiredFields = ["firstName", "lastName", "phone", "email", "projectType"];
+const requiredFields = ["phone", "email", "projectType"];
 const rateWindowMs = 60_000;
 const maxRequestsPerWindow = 5;
 const recentRequests = new Map<string, { count: number; resetAt: number }>();
@@ -18,6 +18,12 @@ export async function POST(request: Request) {
   }
 
   const missing = requiredFields.filter((field) => !String(formData.get(field) || "").trim());
+  const hasSplitName = String(formData.get("firstName") || "").trim() && String(formData.get("lastName") || "").trim();
+  const hasFullName = String(formData.get("fullName") || "").trim();
+  if (!hasSplitName && !hasFullName) {
+    missing.unshift("fullName");
+  }
+
   if (missing.length > 0) {
     return respond(request, { ok: false, error: "Missing required lead fields.", missing }, 400);
   }
