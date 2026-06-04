@@ -1,3 +1,10 @@
+const driveImage = (id: string) => `https://drive.google.com/uc?export=view&id=${id}`;
+
+const approvedAssets = {
+  logo: driveImage("1TIxz4t2mu_NFgZvYMLKJ0uZ6WY3N3lp9"),
+  brandPackBoard: driveImage("1OKaxgtblK32U8Ffc16wPKlIDnlW_Eokl")
+};
+
 export const brand = {
   name: "Nashville Resin Worx",
   tagline: "Epoxy | Wood | Metal | Concrete | Stone",
@@ -5,6 +12,10 @@ export const brand = {
   cta: "Get My Free Estimate",
   leadEmail: "info@epoxywillchangeyourlife.com",
   visualizerUrl: "https://torginol.com/design",
+  assets: {
+    ...approvedAssets,
+    heroBackground: `linear-gradient(90deg,rgba(3,6,7,.97),rgba(3,6,7,.76) 41%,rgba(3,6,7,.25) 68%,rgba(3,6,7,.92)),radial-gradient(circle at 42% 72%,rgba(33,214,255,.5),transparent 18%),radial-gradient(circle at 72% 42%,rgba(199,116,41,.35),transparent 16%),url("${approvedAssets.brandPackBoard}") center/cover`
+  },
   colors: {
     metallicResinBlue: "#16B7D9",
     deepMetallicBlue: "#0A6F8E",
@@ -25,12 +36,12 @@ export const brand = {
     "Stone Surfaces"
   ],
   gallery: [
-    { title: "Metallic Epoxy", src: "/images/resin-surface-hero.svg" },
-    { title: "Flake Floors", src: "/images/flake-floor.svg" },
-    { title: "River Tables", src: "/images/river-table.svg" },
-    { title: "Countertops", src: "/images/countertop.svg" },
-    { title: "Polished Concrete", src: "/images/polished-concrete.svg" },
-    { title: "Concrete Stain", src: "/images/concrete-stain.svg" }
+    { title: "Nashville Brand Pack", src: approvedAssets.brandPackBoard },
+    { title: "Primary Logo", src: approvedAssets.logo },
+    { title: "Surface Systems", src: approvedAssets.brandPackBoard },
+    { title: "Process Visuals", src: approvedAssets.brandPackBoard },
+    { title: "Product Mockups", src: approvedAssets.brandPackBoard },
+    { title: "Brand Standards", src: approvedAssets.brandPackBoard }
   ],
   routes: ["/", "/services", "/gallery", "/products", "/color-charts", "/about", "/contact", "/customer-portal", "/visualizer", "/admin"]
 };
