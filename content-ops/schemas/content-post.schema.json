@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nashvilleresinworx.local/schemas/content-post.schema.json",
+  "title": "NRW Content Post",
+  "type": "object",
+  "required": ["id", "platform", "status", "riskLevel", "copy", "cta", "createdAt"],
+  "properties": {
+    "id": { "type": "string" },
+    "campaignId": { "type": "string" },
+    "platform": { "type": "string" },
+    "status": { "enum": ["draft", "needs_revision", "approval_required", "approved", "queued", "published", "failed", "archived"] },
+    "riskLevel": { "enum": ["low", "medium", "high"] },
+    "copy": { "type": "string" },
+    "cta": { "type": "string" },
+    "assetIds": { "type": "array", "items": { "type": "string" } },
+    "approvalRequestId": { "type": "string" },
+    "scheduledFor": { "type": "string", "format": "date-time" },
+    "createdAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}
