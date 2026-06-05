@@ -1,4 +1,5 @@
 import { brand } from "@/lib/brand";
+import type { CSSProperties } from "react";
 
 const approvedSurfaceImage = brand.assets.brandPackBoard;
 
@@ -13,15 +14,19 @@ const processSteps = [
 
 const colorChips = ["Domino", "Nightfall", "Gravel", "Tuxedo", "Shoreline", "Wombat", "Saddle Tan", "Cabin Fever", "Outback", "Biscuit", "Custom Blend", "Chestnut"];
 const products = [
-  { name: "Epoxy Floor Kit", price: "$249.99", image: approvedSurfaceImage },
-  { name: "Metallic Epoxy Kit", price: "$299.99", image: approvedSurfaceImage },
-  { name: "Flake Broadcast Kit", price: "$99.99", image: approvedSurfaceImage },
-  { name: "Polyaspartic Topcoat", price: "$129.99", image: approvedSurfaceImage }
+  { name: "Epoxy Floor Systems", detail: "Project-quoted installation", image: approvedSurfaceImage },
+  { name: "Metallic Epoxy Finishes", detail: "Custom color consultation", image: approvedSurfaceImage },
+  { name: "Flake Broadcast Systems", detail: "Garage and commercial floors", image: approvedSurfaceImage },
+  { name: "Polyaspartic Topcoats", detail: "Durable finish options", image: approvedSurfaceImage }
 ];
 const trustItems = ["Navy Seal Museum", "Johnson & Johnson", "Walgreens", "Public Storage"];
 const iconBar = ["Premium Materials", "Expert Craftsmanship", "Built To Last", "Locally Owned", "Industry Certified", "Satisfaction Guaranteed", "20+ Years Experience"];
 const phoneDisplay = "(772) 209-0266";
 const phoneHref = "tel:17722090266";
+const estimateUrl = `${brand.siteUrl}/#estimate`;
+const footerStyle: CSSProperties = { background: "#ffffff", color: "#101214", borderTop: "1px solid #d8d8d8" };
+const footerTextStyle: CSSProperties = { color: "#42494c" };
+const footerLinkStyle: CSSProperties = { color: "#101214" };
 
 export default function HomePage() {
   return (
@@ -37,7 +42,7 @@ export default function HomePage() {
             <div className="hero-badges" aria-label="Project proof">
               {["15+ Years Experience", "Industry Certified", "Locally Owned & Operated", "Premium Materials"].map((item) => <div key={item}><span aria-hidden="true">◇</span>{item}</div>)}
             </div>
-            <div className="offer-card"><div><strong>Unlock <span>15% Off</span></strong><p>Scan the QR code or submit the form to qualify.</p></div><Qr /></div>
+            <div className="offer-card"><div><strong>Unlock <span>15% Off</span></strong><p>Open the estimate form to qualify.</p></div><QrLink href={estimateUrl} label="Estimate form" /></div>
           </div>
           <EstimateForm />
         </div>
@@ -80,7 +85,7 @@ export default function HomePage() {
         </div>
         <div className="product-panel">
           <h2>Epoxy Products</h2>
-          <div className="product-list">{products.map((product) => <article key={product.name}><img src={product.image} alt={`${product.name} product`} /><strong>{product.name}</strong><span>{product.price}</span></article>)}</div>
+          <div className="product-list">{products.map((product) => <article key={product.name}><img src={product.image} alt={`${product.name} product`} /><strong>{product.name}</strong><span>{product.detail}</span></article>)}</div>
           <a className="blue-button" href="/products">Shop All Products</a>
         </div>
         <div className="proof-panel">
@@ -147,18 +152,50 @@ function EstimateForm() {
   );
 }
 
-function Qr() {
-  return <div className="qr" aria-label="QR code placeholder"><span /><span /><span /></div>;
+function QrLink({ href, label }: { href: string; label: string }) {
+  return (
+    <a
+      href={href}
+      aria-label={`Open ${label}`}
+      style={{
+        display: "grid",
+        placeItems: "center",
+        width: 96,
+        height: 96,
+        flex: "0 0 auto",
+        padding: 10,
+        border: "2px solid #21d6ff",
+        borderRadius: 5,
+        background: "#ffffff",
+        color: "#08789b",
+        textAlign: "center",
+        textTransform: "uppercase",
+        boxShadow: "0 12px 26px rgba(0,168,216,.18)"
+      }}
+    >
+      <span style={{ fontSize: ".62rem", fontWeight: 900, lineHeight: 1 }}>Open</span>
+      <strong style={{ fontSize: ".74rem", lineHeight: 1.1 }}>{label}</strong>
+    </a>
+  );
 }
 
 function Footer() {
   return (
-    <footer className="mock-footer">
-      <div className="footer-brand"><LogoLockup /><p>Transforming concrete, wood, and metal into stunning durable surfaces built for life.</p></div>
-      <div><h3>Services</h3>{brand.services.slice(0, 6).map((service) => <a href="/services" key={service}>{service}</a>)}</div>
-      <div><h3>Quick Links</h3><a href={phoneHref}>{phoneDisplay}</a><a href={`mailto:${brand.leadEmail}`}>{brand.leadEmail}</a><a href="#estimate">{brand.cta}</a></div>
-      <div><h3>The Nashville Resin Worx App</h3><div className="footer-icons"><span>Track Progress</span><span>Send Messages</span><span>Pay Securely</span><span>Care Guides</span></div></div>
-      <div className="footer-qr"><h3>Download The App</h3><Qr /><small>Scan QR code to install</small></div>
+    <footer className="mock-footer" style={footerStyle}>
+      <div className="footer-brand"><FooterLogoLockup /><p style={footerTextStyle}>Transforming concrete, wood, and metal into stunning durable surfaces built for life.</p></div>
+      <div><h3>Services</h3>{brand.services.slice(0, 6).map((service) => <a href="/services" key={service} style={footerLinkStyle}>{service}</a>)}</div>
+      <div><h3>Quick Links</h3><a href={phoneHref} style={footerLinkStyle}>{phoneDisplay}</a><a href={`mailto:${brand.leadEmail}`} style={footerLinkStyle}>{brand.leadEmail}</a><a href="#estimate" style={footerLinkStyle}>{brand.cta}</a></div>
+      <div><h3>The Nashville Resin Worx App</h3><div className="footer-icons"><span style={footerTextStyle}>Track Progress</span><span style={footerTextStyle}>Send Messages</span><span style={footerTextStyle}>Pay Securely</span><span style={footerTextStyle}>Care Guides</span></div></div>
+      <div className="footer-qr"><h3>Customer Portal</h3><QrLink href="/customer-portal" label="Portal" /><small style={footerTextStyle}>Open the customer portal</small></div>
     </footer>
+  );
+}
+
+function FooterLogoLockup() {
+  return (
+    <a className="logo-lockup" href="/" style={footerLinkStyle}>
+      <span className="logo-emblem"><img src={brand.assets.logo} alt="Nashville Resin Worx logo" /></span>
+      <span style={{ color: "#101214" }}>Nashville<strong>Resin Worx</strong><small style={{ color: "#42494c" }}>{brand.tagline}</small></span>
+    </a>
   );
 }
