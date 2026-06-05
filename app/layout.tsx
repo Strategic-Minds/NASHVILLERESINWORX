@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     "Premium custom decorative surfaces in Nashville: metallic epoxy, flake systems, polished concrete, stained concrete, countertops, river tables, stone surfaces, and decorative concrete.",
   manifest: "/manifest.webmanifest",
   applicationName: brand.name,
+  icons: {
+    apple: "/icons/apple-touch-icon.png"
+  },
   robots: {
     index: true,
     follow: true,
