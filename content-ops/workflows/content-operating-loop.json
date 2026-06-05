@@ -1,0 +1,41 @@
+{
+  "name": "nrw_content_operating_loop",
+  "version": "0.1.0",
+  "mode": "dry_run_until_approved",
+  "cadence": {
+    "asset_audit": "hourly",
+    "discovery_scan": "every_4_hours",
+    "draft_generation": "hourly",
+    "analytics_import": "twice_daily",
+    "daily_digest": "daily"
+  },
+  "stages": [
+    "discover",
+    "capture",
+    "analyze",
+    "repurpose",
+    "create",
+    "revise",
+    "finalize",
+    "queue",
+    "publish",
+    "measure",
+    "optimize"
+  ],
+  "approval_gates": [
+    "public_publishing",
+    "paid_ads",
+    "pricing_claims",
+    "warranty_claims",
+    "safety_claims",
+    "customer_identity",
+    "bulk_email_sms",
+    "high_risk_replies"
+  ],
+  "blocked_until_verified": [
+    "platform_credentials",
+    "drive_asset_population",
+    "playwright_runtime",
+    "outbound_post_runtime"
+  ]
+}
