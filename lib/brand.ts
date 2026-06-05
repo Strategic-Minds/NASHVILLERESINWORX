@@ -36,12 +36,13 @@ export const brand = {
     "Stone Surfaces"
   ],
   gallery: [
-    { title: "Nashville Brand Pack", src: approvedAssets.brandPackBoard },
-    { title: "Primary Logo", src: approvedAssets.logo },
-    { title: "Surface Systems", src: approvedAssets.brandPackBoard },
-    { title: "Process Visuals", src: approvedAssets.brandPackBoard },
-    { title: "Product Mockups", src: approvedAssets.brandPackBoard },
-    { title: "Brand Standards", src: approvedAssets.brandPackBoard }
+    { title: "Metallic Epoxy", src: approvedAssets.brandPackBoard },
+    { title: "Flake Floors", src: approvedAssets.brandPackBoard },
+    { title: "Concrete Stain", src: approvedAssets.brandPackBoard },
+    { title: "Polished Concrete", src: approvedAssets.brandPackBoard },
+    { title: "River Tables", src: approvedAssets.brandPackBoard },
+    { title: "Countertops", src: approvedAssets.brandPackBoard },
+    { title: "Stone Surfaces", src: approvedAssets.brandPackBoard }
   ],
   routes: ["/", "/services", "/gallery", "/products", "/color-charts", "/about", "/contact", "/customer-portal", "/visualizer", "/admin"]
 };
