@@ -5,11 +5,11 @@ const approvedSurfaceImage = brand.assets.brandPackBoard;
 
 const processSteps = [
   { title: "Sign Up & Schedule Job", image: approvedSurfaceImage, points: ["Free estimate", "Floor visualizer", "Digital contract"] },
-  { title: "Prep Work", image: approvedSurfaceImage, points: ["Grind and clean concrete", "Crack repair and patching", "Dust-free finish"] },
+  { title: "Prep Work", image: brand.assets.premiumSceneA, points: ["Grind and clean concrete", "Crack repair and patching", "Dust-free finish"] },
   { title: "Base Coat", image: approvedSurfaceImage, points: ["Moisture tolerant", "Anti-crack membrane", "Flexible and durable"] },
-  { title: "Beauty Coat", image: approvedSurfaceImage, points: ["Flake, metallic, or stain", "Faux concrete stains", "Natural concrete look"] },
-  { title: "Topcoat Finish", image: approvedSurfaceImage, points: ["Satin or high gloss", "Maximum durability", "Final clean walkthrough"] },
-  { title: "Final Inspection", image: approvedSurfaceImage, points: ["Quality inspection", "Touch-up if needed", "100% satisfaction"] }
+  { title: "Beauty Coat", image: brand.assets.visualMockup, points: ["Flake, metallic, or stain", "Faux concrete stains", "Natural concrete look"] },
+  { title: "Topcoat Finish", image: brand.assets.websiteMockup, points: ["Satin or high gloss", "Maximum durability", "Final clean walkthrough"] },
+  { title: "Final Inspection", image: brand.assets.premiumSceneB, points: ["Quality inspection", "Touch-up if needed", "100% satisfaction"] }
 ];
 
 const appSteps = [
@@ -19,11 +19,32 @@ const appSteps = [
   { title: "Track The Job", detail: "Use the portal flow for timeline, documents, messages, payments, and care guides.", href: "#portal" }
 ];
 
+const terrainStories = [
+  {
+    title: "River Tables",
+    kicker: "Deep-pour craft",
+    image: brand.assets.premiumSceneB,
+    detail: "Wood grain, clear depth, metallic blue movement, and countertop-level finish direction for custom statement pieces."
+  },
+  {
+    title: "Mountain Homes",
+    kicker: "Cabin to patio",
+    image: brand.assets.visualMockup,
+    detail: "Surfaces for lodge, basement, porch, and weekend-home spaces that should feel premium, rugged, and clean."
+  },
+  {
+    title: "All-Terrain Shops",
+    kicker: "Garage ready",
+    image: brand.assets.premiumSceneA,
+    detail: "Garage, truck, ATV, tool, and workbench zones with a phone-first estimate path and finish-first planning."
+  }
+];
+
 const colorChips = ["Domino", "Nightfall", "Gravel", "Tuxedo", "Shoreline", "Wombat", "Saddle Tan", "Cabin Fever", "Outback", "Biscuit", "Custom Blend", "Chestnut"];
 const products = [
-  { name: "Epoxy Floor Systems", detail: "Project-quoted installation", image: approvedSurfaceImage },
-  { name: "Metallic Epoxy Finishes", detail: "Custom color consultation", image: approvedSurfaceImage },
-  { name: "Flake Broadcast Systems", detail: "Garage and commercial floors", image: approvedSurfaceImage },
+  { name: "Deep Pour Epoxy", detail: "River table and slab-friendly direction", image: brand.assets.premiumSceneB },
+  { name: "Table Epoxy", detail: "Custom surface consultation", image: brand.assets.websiteMockup },
+  { name: "Metallic Pigments", detail: "Blue, copper, silver, and custom motion", image: brand.assets.visualMockup },
   { name: "Polyaspartic Topcoats", detail: "Durable finish options", image: approvedSurfaceImage }
 ];
 const trustItems = ["Navy Seal Museum", "Johnson & Johnson", "Walgreens", "Public Storage"];
@@ -84,10 +105,12 @@ export default function HomePage() {
       <section className="work-section" id="gallery">
         <div className="center-head dark"><span className="section-kicker cyan">Project proof</span><h2>Our Work Speaks For Itself</h2></div>
         <div className="work-strip">
-          {brand.gallery.slice(0, 5).map((item) => <a href="/gallery" key={item.title}><img src={item.src} alt={`${item.title} project example`} /><span>{item.title}</span></a>)}
+          {brand.gallery.map((item) => <a href="/gallery" key={item.title}><img src={item.src} alt={`${item.title} project example`} /><span>{item.title}</span></a>)}
         </div>
         <a className="blue-button" href="/gallery">View Full Gallery</a>
       </section>
+
+      <TerrainStorySection />
 
       <section className="market-section">
         <div className="color-panel">
@@ -98,7 +121,7 @@ export default function HomePage() {
           <div className="visualizer-block"><strong>Floor Visualizer by Torginol</strong><p>See your space before you build it.</p><a className="blue-button outline" href="/visualizer">Try Floor Visualizer</a></div>
         </div>
         <div className="product-panel">
-          <h2>Epoxy Products</h2>
+          <h2>River Tables & Epoxy Products</h2>
           <div className="product-list">{products.map((product) => <article key={product.name}><img src={product.image} alt={`${product.name} product`} /><strong>{product.name}</strong><span>{product.detail}</span></article>)}</div>
           <a className="blue-button" href="/products">Shop All Products</a>
         </div>
@@ -143,6 +166,31 @@ function MobileStepSection() {
           </a>
         ))}
       </div>
+    </section>
+  );
+}
+
+function TerrainStorySection() {
+  return (
+    <section className="terrain-section" aria-label="River table and terrain surface visual direction">
+      <div className="terrain-head">
+        <span className="section-kicker cyan">Ultra lifelike visual direction</span>
+        <h2>River Tables, Mountain Homes, All-Terrain Shops</h2>
+        <p>Premium resin visuals for custom tables, hard-working garages, cabin-style spaces, and the kind of shop floors that need to look sharp after real use.</p>
+      </div>
+      <div className="terrain-grid">
+        {terrainStories.map((story) => (
+          <article className="terrain-card" key={story.title}>
+            <img src={story.image} alt={`${story.title} visual direction`} />
+            <div>
+              <span>{story.kicker}</span>
+              <h3>{story.title}</h3>
+              <p>{story.detail}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <a className="blue-button" href="#estimate">Plan My Surface</a>
     </section>
   );
 }
