@@ -6,5 +6,27 @@
     "app/api/**/*": {
       "maxDuration": 10
     }
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/cron/nrw-morning-readiness",
+      "schedule": "0 12 * * *"
+    },
+    {
+      "path": "/api/cron/nrw-content-queue",
+      "schedule": "0 13 * * *"
+    },
+    {
+      "path": "/api/cron/nrw-metricool-draft-check",
+      "schedule": "0 15 * * *"
+    },
+    {
+      "path": "/api/cron/nrw-analytics-sync",
+      "schedule": "0 23 * * *"
+    },
+    {
+      "path": "/api/cron/nrw-weekly-optimization",
+      "schedule": "0 14 * * 1"
+    }
+  ]
 }
