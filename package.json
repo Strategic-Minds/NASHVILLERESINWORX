@@ -1,7 +1,8 @@
 {
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/generate-pwa-icons.mjs && next build",
+    "generate:pwa-icons": "node scripts/generate-pwa-icons.mjs",
+    "build": "npm run generate:pwa-icons && next build",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
