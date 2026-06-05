@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nashvilleresinworx.local/schemas/asset.schema.json",
+  "title": "NRW Asset",
+  "type": "object",
+  "required": ["id", "sourceFolder", "assetType", "status", "riskLevel", "createdAt"],
+  "properties": {
+    "id": { "type": "string" },
+    "sourceFolder": { "type": "string" },
+    "driveFileId": { "type": "string" },
+    "assetType": { "enum": ["image", "video", "document", "audio", "unknown"] },
+    "serviceCategory": { "type": "string" },
+    "status": { "enum": ["new", "approved", "needs_review", "rejected", "archived"] },
+    "riskLevel": { "enum": ["low", "medium", "high"] },
+    "usageRights": { "enum": ["verified", "needs_review", "unknown"] },
+    "customerIdentifiable": { "type": "boolean" },
+    "notes": { "type": "string" },
+    "createdAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}
