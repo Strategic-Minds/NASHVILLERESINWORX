@@ -20,6 +20,8 @@ const products = [
 ];
 const trustItems = ["Navy Seal Museum", "Johnson & Johnson", "Walgreens", "Public Storage"];
 const iconBar = ["Premium Materials", "Expert Craftsmanship", "Built To Last", "Locally Owned", "Industry Certified", "Satisfaction Guaranteed", "20+ Years Experience"];
+const phoneDisplay = "(772) 209-0266";
+const phoneHref = "tel:17722090266";
 
 export default function HomePage() {
   return (
@@ -106,7 +108,7 @@ export default function HomePage() {
 }
 
 function TopBar() {
-  return <div className="top-bar"><span>⌖ Nashville, Tennessee</span><a href="tel:16151234567">(615) 123-4567</a><a href={`mailto:${brand.leadEmail}`}>{brand.leadEmail}</a><span className="socials">● ● ● ●</span></div>;
+  return <div className="top-bar"><span>⌖ Nashville, Tennessee</span><a href={phoneHref}>{phoneDisplay}</a><a href={`mailto:${brand.leadEmail}`}>{brand.leadEmail}</a><span className="socials">● ● ● ●</span></div>;
 }
 
 function LogoLockup() {
@@ -154,7 +156,7 @@ function Footer() {
     <footer className="mock-footer">
       <div className="footer-brand"><LogoLockup /><p>Transforming concrete, wood, and metal into stunning durable surfaces built for life.</p></div>
       <div><h3>Services</h3>{brand.services.slice(0, 6).map((service) => <a href="/services" key={service}>{service}</a>)}</div>
-      <div><h3>Quick Links</h3><a href="tel:16151234567">(615) 123-4567</a><a href={`mailto:${brand.leadEmail}`}>{brand.leadEmail}</a><a href="#estimate">{brand.cta}</a></div>
+      <div><h3>Quick Links</h3><a href={phoneHref}>{phoneDisplay}</a><a href={`mailto:${brand.leadEmail}`}>{brand.leadEmail}</a><a href="#estimate">{brand.cta}</a></div>
       <div><h3>The Nashville Resin Worx App</h3><div className="footer-icons"><span>Track Progress</span><span>Send Messages</span><span>Pay Securely</span><span>Care Guides</span></div></div>
       <div className="footer-qr"><h3>Download The App</h3><Qr /><small>Scan QR code to install</small></div>
     </footer>
