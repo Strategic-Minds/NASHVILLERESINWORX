@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nashvilleresinworx.local/schemas/publishing-queue.schema.json",
+  "title": "NRW Publishing Queue Item",
+  "type": "object",
+  "required": ["id", "contentPostId", "platform", "status", "approvalRequired", "createdAt"],
+  "properties": {
+    "id": { "type": "string" },
+    "contentPostId": { "type": "string" },
+    "platform": { "type": "string" },
+    "status": { "enum": ["queued", "blocked", "approved_to_post", "posted", "failed", "cancelled"] },
+    "approvalRequired": { "type": "boolean" },
+    "approvalRequestId": { "type": "string" },
+    "scheduledFor": { "type": "string", "format": "date-time" },
+    "trackingId": { "type": "string" },
+    "createdAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}
