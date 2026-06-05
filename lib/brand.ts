@@ -2,7 +2,11 @@ const driveImage = (id: string) => `https://drive.google.com/uc?export=view&id=$
 
 const approvedAssets = {
   logo: driveImage("1TIxz4t2mu_NFgZvYMLKJ0uZ6WY3N3lp9"),
-  brandPackBoard: driveImage("1OKaxgtblK32U8Ffc16wPKlIDnlW_Eokl")
+  brandPackBoard: driveImage("1OKaxgtblK32U8Ffc16wPKlIDnlW_Eokl"),
+  websiteMockup: driveImage("1a0-6OwJwwpnSWqbV8IMKL14HcL0NeTmo"),
+  visualMockup: driveImage("16IyWvLI6x3YtvuziSr4_G7Vu7iysexg1"),
+  premiumSceneA: driveImage("1p-LhIOmknrhpuuTtyuSJ9-zRy1W0_ApO"),
+  premiumSceneB: driveImage("1ALwbWKnq3CUNYOMMG4Yvf4AabeosXE0z")
 };
 
 export const brand = {
@@ -37,12 +41,12 @@ export const brand = {
   ],
   gallery: [
     { title: "Metallic Epoxy", src: approvedAssets.brandPackBoard },
-    { title: "Flake Floors", src: approvedAssets.brandPackBoard },
-    { title: "Concrete Stain", src: approvedAssets.brandPackBoard },
-    { title: "Polished Concrete", src: approvedAssets.brandPackBoard },
-    { title: "River Tables", src: approvedAssets.brandPackBoard },
-    { title: "Countertops", src: approvedAssets.brandPackBoard },
-    { title: "Stone Surfaces", src: approvedAssets.brandPackBoard }
+    { title: "Flake Floors", src: approvedAssets.premiumSceneA },
+    { title: "Concrete Stain", src: approvedAssets.websiteMockup },
+    { title: "Polished Concrete", src: approvedAssets.visualMockup },
+    { title: "River Tables", src: approvedAssets.premiumSceneB },
+    { title: "Countertops", src: approvedAssets.websiteMockup },
+    { title: "Stone Surfaces", src: approvedAssets.premiumSceneA }
   ],
   routes: ["/", "/services", "/gallery", "/products", "/color-charts", "/about", "/contact", "/customer-portal", "/visualizer", "/admin"]
 };
