@@ -113,7 +113,7 @@ export default function HomePage() {
 }
 
 function TopBar() {
-  return <div className="top-bar"><span>⌖ Nashville, Tennessee</span><a href={phoneHref}>{phoneDisplay}</a><a href={`mailto:${brand.leadEmail}`}>{brand.leadEmail}</a><span className="socials">● ● ● ●</span></div>;
+  return <div className="top-bar"><span>⌖ Nashville, Tennessee</span><a href={phoneHref}>{phoneDisplay}</a><a href={`mailto:${brand.leadEmail}`}>{brand.leadEmail}</a></div>;
 }
 
 function LogoLockup() {
