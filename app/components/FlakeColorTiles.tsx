@@ -8,7 +8,13 @@ type ColorTile = {
   image: string;
 };
 
-const colorCollections = {
+type ColorCollection = {
+  label: string;
+  selectedText: string;
+  colors: ColorTile[];
+};
+
+const colorCollections: Record<string, ColorCollection> = {
   flake: {
     label: "Flake",
     selectedText: "epoxy flake color",
@@ -85,9 +91,9 @@ const colorCollections = {
       { name: "Midnight Black", image: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-stained-concrete-color-midnight-black.webp?v=1780954977" }
     ]
   }
-} satisfies Record<string, { label: string; selectedText: string; colors: ColorTile[] }>;
+};
 
-type CollectionKey = keyof typeof colorCollections;
+type CollectionKey = "flake" | "metallic" | "stain";
 
 export function FlakeColorTiles() {
   useEffect(() => {
