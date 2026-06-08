@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./mobile-pwa.css";
+import "./brand-overrides.css";
 import { brand } from "@/lib/brand";
 import { TelemetryBeacon } from "@/app/components/TelemetryBeacon";
 
