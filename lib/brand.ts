@@ -4,7 +4,8 @@ const generatedAssets = {
   metallicMarble: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-metallic-marble-epoxy-floor.webp?v=1780952466",
   metallicBlue: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-blue-metallic-epoxy-garage-floor.webp?v=1780952473",
   flakeCloseup: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-flake-epoxy-closeup.webp?v=1780952482",
-  flakeColorChart: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/xps-top-12-epoxy-flake-color-chart.webp?v=1780952839"
+  flakeColorChart: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/xps-top-12-epoxy-flake-color-chart.webp?v=1780952839",
+  concreteCountertop: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-concrete-countertop-outdoor-kitchen.webp?v=1780955836"
 };
 
 const approvedAssets = {
@@ -13,7 +14,8 @@ const approvedAssets = {
   websiteMockup: generatedAssets.metallicMarble,
   visualMockup: generatedAssets.metallicBlue,
   premiumSceneA: generatedAssets.flakeCloseup,
-  premiumSceneB: generatedAssets.metallicMarble
+  premiumSceneB: generatedAssets.metallicMarble,
+  countertop: generatedAssets.concreteCountertop
 };
 
 export const brand = {
@@ -53,7 +55,7 @@ export const brand = {
     { title: "Concrete Stain", src: generatedAssets.flakeCloseup },
     { title: "Polished Concrete", src: generatedAssets.metallicBlue },
     { title: "River Tables", src: generatedAssets.metallicMarble },
-    { title: "Countertops", src: generatedAssets.metallicMarble },
+    { title: "Countertops", src: generatedAssets.concreteCountertop },
     { title: "Stone Surfaces", src: generatedAssets.metallicBlue }
   ],
   routes: ["/", "/services", "/gallery", "/products", "/color-charts", "/about", "/contact", "/customer-portal", "/visualizer", "/admin"]
