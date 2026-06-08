@@ -43,7 +43,7 @@ const terrainStories = [
 const colorChips = ["Domino", "Nightfall", "Gravel", "Tuxedo", "Shoreline", "Wombat", "Saddle Tan", "Cabin Fever", "Outback", "Biscuit", "Custom Blend", "Chestnut"];
 const products = [
   { name: "Deep Pour Epoxy", detail: "River table and slab-friendly direction", image: brand.assets.premiumSceneB },
-  { name: "Table Epoxy", detail: "Custom surface consultation", image: brand.assets.websiteMockup },
+  { name: "Countertop Epoxy", detail: "Outdoor kitchen and custom countertop surfaces", image: brand.assets.countertop },
   { name: "Metallic Pigments", detail: "Blue, copper, silver, and custom motion", image: brand.assets.visualMockup },
   { name: "Polyaspartic Topcoats", detail: "Durable finish options", image: approvedSurfaceImage }
 ];
