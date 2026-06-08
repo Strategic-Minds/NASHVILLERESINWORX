@@ -3,7 +3,8 @@ const generatedAssets = {
   flakeHero: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-flake-epoxy-garage-hero.webp?v=1780952458",
   metallicMarble: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-metallic-marble-epoxy-floor.webp?v=1780952466",
   metallicBlue: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-blue-metallic-epoxy-garage-floor.webp?v=1780952473",
-  flakeCloseup: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-flake-epoxy-closeup.webp?v=1780952482"
+  flakeCloseup: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-flake-epoxy-closeup.webp?v=1780952482",
+  flakeColorChart: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/xps-top-12-epoxy-flake-color-chart.webp?v=1780952839"
 };
 
 const approvedAssets = {
