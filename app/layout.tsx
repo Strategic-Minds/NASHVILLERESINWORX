@@ -3,6 +3,7 @@ import "./globals.css";
 import "./mobile-pwa.css";
 import "./brand-overrides.css";
 import { brand } from "@/lib/brand";
+import { FlakeColorTiles } from "@/app/components/FlakeColorTiles";
 import { TelemetryBeacon } from "@/app/components/TelemetryBeacon";
 
 export const metadata: Metadata = {
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         {children}
+        <FlakeColorTiles />
         <TelemetryBeacon />
       </body>
     </html>
