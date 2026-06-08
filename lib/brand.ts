@@ -15,7 +15,8 @@ const approvedAssets = {
   visualMockup: generatedAssets.metallicBlue,
   premiumSceneA: generatedAssets.flakeCloseup,
   premiumSceneB: generatedAssets.metallicMarble,
-  countertop: generatedAssets.concreteCountertop
+  countertop: generatedAssets.concreteCountertop,
+  countertopOutdoorKitchen: generatedAssets.concreteCountertop
 };
 
 export const brand = {
