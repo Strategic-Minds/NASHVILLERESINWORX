@@ -9,7 +9,7 @@ const processSteps = [
   { title: "Base Coat", image: approvedSurfaceImage, points: ["Moisture tolerant", "Anti-crack membrane", "Flexible and durable"] },
   { title: "Beauty Coat", image: brand.assets.visualMockup, points: ["Flake, metallic, or stain", "Faux concrete stains", "Natural concrete look"] },
   { title: "Topcoat Finish", image: brand.assets.websiteMockup, points: ["Satin or high gloss", "Maximum durability", "Final clean walkthrough"] },
-  { title: "Final Inspection", image: brand.assets.premiumSceneB, points: ["Quality inspection", "Touch-up if needed", "100% satisfaction"] }
+  { title: "Final Inspection", image: brand.assets.finalInspection, points: ["Quality inspection", "Touch-up if needed", "100% satisfaction"] }
 ];
 
 const appSteps = [
