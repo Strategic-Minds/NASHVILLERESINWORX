@@ -3,6 +3,7 @@ import "./globals.css";
 import "./mobile-pwa.css";
 import "./brand-overrides.css";
 import { brand } from "@/lib/brand";
+import { EstimateFormEnhancer } from "@/app/components/EstimateFormEnhancer";
 import { FlakeColorTiles } from "@/app/components/FlakeColorTiles";
 import { TelemetryBeacon } from "@/app/components/TelemetryBeacon";
 
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body>
         {children}
+        <EstimateFormEnhancer />
         <FlakeColorTiles />
         <TelemetryBeacon />
       </body>
