@@ -6,7 +6,13 @@ const generatedAssets = {
   flakeCloseup: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-flake-epoxy-closeup.webp?v=1780952482",
   flakeColorChart: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/xps-top-12-epoxy-flake-color-chart.webp?v=1780952839",
   concreteCountertop: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-concrete-countertop-outdoor-kitchen.webp?v=1780955836",
-  finalInspection: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-final-inspection-same-floor-lighting-no-woman.png?v=1781035740"
+  finalInspection: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-process-06-final-inspection.png?v=1781036605",
+  processSignUp: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-process-01-sign-up-schedule.png?v=1781036561",
+  processPrepWork: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-process-02-prep-work.png?v=1781036569",
+  processBaseCoat: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-process-03-base-coat.png?v=1781036578",
+  processBeautyCoat: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-process-04-beauty-coat.png?v=1781036586",
+  processTopcoatFinish: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-process-05-topcoat-finish.png?v=1781036595",
+  processFinalInspection: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-process-06-final-inspection.png?v=1781036605"
 };
 
 const approvedAssets = {
