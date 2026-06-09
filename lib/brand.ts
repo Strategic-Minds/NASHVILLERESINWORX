@@ -5,7 +5,8 @@ const generatedAssets = {
   metallicBlue: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-blue-metallic-epoxy-garage-floor.webp?v=1780952473",
   flakeCloseup: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-flake-epoxy-closeup.webp?v=1780952482",
   flakeColorChart: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/xps-top-12-epoxy-flake-color-chart.webp?v=1780952839",
-  concreteCountertop: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-concrete-countertop-outdoor-kitchen.webp?v=1780955836"
+  concreteCountertop: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-concrete-countertop-outdoor-kitchen.webp?v=1780955836",
+  finalInspection: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-final-inspection-eden.png?v=1780986924"
 };
 
 const approvedAssets = {
@@ -15,6 +16,7 @@ const approvedAssets = {
   visualMockup: generatedAssets.metallicBlue,
   premiumSceneA: generatedAssets.flakeCloseup,
   premiumSceneB: generatedAssets.metallicMarble,
+  finalInspection: generatedAssets.finalInspection,
   countertop: generatedAssets.concreteCountertop,
   countertopOutdoorKitchen: generatedAssets.concreteCountertop
 };
