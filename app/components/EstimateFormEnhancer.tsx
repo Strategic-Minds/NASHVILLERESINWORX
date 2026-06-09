@@ -6,7 +6,7 @@ const styleId = "nrw-estimate-enhancer-styles";
 const signUpScheduleImage = "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-sign-up-schedule-job.png?v=1780967924";
 const prepWorkImage = "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-prep-work-garage-grinder-larger.png?v=1780969460";
 const baseCoatImage = "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-basecoat-jeremy-left-eden-spikes.png?v=1780971616";
-const beautyCoatImage = "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-beauty-coat-jeremy-behind-eden-concrete.png?v=1780975318";
+const beautyCoatImage = "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-beauty-coat-jeremy-bent-eden-upright.jpg?v=1780976303";
 
 export function EstimateFormEnhancer() {
   useEffect(() => {
@@ -14,7 +14,7 @@ export function EstimateFormEnhancer() {
     installProcessStepImage("Sign Up & Schedule Job", signUpScheduleImage, "Nashville Resin Worx sign up and schedule a job");
     installProcessStepImage("Prep Work", prepWorkImage, "Nashville Resin Worx prep work garage with larger concrete grinder");
     installProcessStepImage("Base Coat", baseCoatImage, "Nashville Resin Worx base coat Jeremy and Eden wearing spike shoes");
-    installProcessStepImage("Beauty Coat", beautyCoatImage, "Nashville Resin Worx beauty coat Jeremy behind Eden on concrete as Eden pulls squeegee");
+    installProcessStepImage("Beauty Coat", beautyCoatImage, "Nashville Resin Worx beauty coat Jeremy bent low pouring epoxy behind Eden standing upright with squeegee");
 
     const form = document.querySelector<HTMLFormElement>("#estimate");
     const offerCard = document.querySelector<HTMLElement>(".offer-card");
