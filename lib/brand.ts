@@ -6,7 +6,7 @@ const generatedAssets = {
   flakeCloseup: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-flake-epoxy-closeup.webp?v=1780952482",
   flakeColorChart: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/xps-top-12-epoxy-flake-color-chart.webp?v=1780952839",
   concreteCountertop: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-concrete-countertop-outdoor-kitchen.webp?v=1780955836",
-  finalInspection: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-final-inspection-horizontal-garage-light-matched.png?v=1781035374"
+  finalInspection: "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-final-inspection-same-floor-lighting-no-woman.png?v=1781035740"
 };
 
 const approvedAssets = {
