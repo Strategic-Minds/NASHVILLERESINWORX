@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { uploadEstimatePhotosToDrive } from "@/lib/google-drive";
 import { buildLeadPayload, persistLeadIfEnabled } from "@/lib/leads";
 
 const requiredFields = ["phone", "email", "projectType"];
@@ -38,7 +39,12 @@ export async function POST(request: Request) {
     return respond(request, { ok: false, error: "A valid phone number is required." }, 400);
   }
 
-  const lead = buildLeadPayload(formData);
+  const photoUploadSummary = await uploadEstimatePhotosToDrive(formData);
+  if (photoUploadSummary.error && process.env.NRW_REQUIRE_DRIVE_UPLOADS === "true") {
+    return respond(request, { ok: false, error: photoUploadSummary.error }, 502, "/estimate-error");
+  }
+
+  const lead = buildLeadPayload(formData, photoUploadSummary);
   const persistence = await persistLeadIfEnabled(lead);
   if (!persistence.ok) {
     return respond(request, { ok: false, error: "Estimate request could not be saved." }, 502, "/estimate-error");
