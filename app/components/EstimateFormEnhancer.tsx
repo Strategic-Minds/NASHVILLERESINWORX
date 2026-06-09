@@ -3,10 +3,12 @@
 import { useEffect } from "react";
 
 const styleId = "nrw-estimate-enhancer-styles";
+const signUpScheduleImage = "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-sign-up-schedule-job.png?v=1780967924";
 
 export function EstimateFormEnhancer() {
   useEffect(() => {
     ensureEnhancerStyles();
+    installSignUpScheduleImage();
 
     const form = document.querySelector<HTMLFormElement>("#estimate");
     const offerCard = document.querySelector<HTMLElement>(".offer-card");
@@ -61,6 +63,19 @@ export function EstimateFormEnhancer() {
   }, []);
 
   return null;
+}
+
+function installSignUpScheduleImage() {
+  const stepCards = Array.from(document.querySelectorAll<HTMLElement>(".step-card"));
+  const signUpCard = stepCards.find((card) => card.querySelector("h3")?.textContent?.trim() === "Sign Up & Schedule Job");
+  const image = signUpCard?.querySelector<HTMLImageElement>("img");
+
+  if (!image || image.src === signUpScheduleImage) {
+    return;
+  }
+
+  image.src = signUpScheduleImage;
+  image.alt = "Nashville Resin Worx sign up and schedule a job";
 }
 
 function installUploadPreview(uploadInput: HTMLInputElement, uploadBox?: HTMLElement | null) {
