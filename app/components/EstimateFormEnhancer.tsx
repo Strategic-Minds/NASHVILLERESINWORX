@@ -4,11 +4,13 @@ import { useEffect } from "react";
 
 const styleId = "nrw-estimate-enhancer-styles";
 const signUpScheduleImage = "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-sign-up-schedule-job.png?v=1780967924";
+const prepWorkImage = "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-prep-work-garage.png?v=1780968976";
 
 export function EstimateFormEnhancer() {
   useEffect(() => {
     ensureEnhancerStyles();
-    installSignUpScheduleImage();
+    installProcessStepImage("Sign Up & Schedule Job", signUpScheduleImage, "Nashville Resin Worx sign up and schedule a job");
+    installProcessStepImage("Prep Work", prepWorkImage, "Nashville Resin Worx prep work garage concrete grinder");
 
     const form = document.querySelector<HTMLFormElement>("#estimate");
     const offerCard = document.querySelector<HTMLElement>(".offer-card");
@@ -65,17 +67,17 @@ export function EstimateFormEnhancer() {
   return null;
 }
 
-function installSignUpScheduleImage() {
+function installProcessStepImage(title: string, imageUrl: string, altText: string) {
   const stepCards = Array.from(document.querySelectorAll<HTMLElement>(".step-card"));
-  const signUpCard = stepCards.find((card) => card.querySelector("h3")?.textContent?.trim() === "Sign Up & Schedule Job");
-  const image = signUpCard?.querySelector<HTMLImageElement>("img");
+  const matchingCard = stepCards.find((card) => card.querySelector("h3")?.textContent?.trim() === title);
+  const image = matchingCard?.querySelector<HTMLImageElement>("img");
 
-  if (!image || image.src === signUpScheduleImage) {
+  if (!image || image.src === imageUrl) {
     return;
   }
 
-  image.src = signUpScheduleImage;
-  image.alt = "Nashville Resin Worx sign up and schedule a job";
+  image.src = imageUrl;
+  image.alt = altText;
 }
 
 function installUploadPreview(uploadInput: HTMLInputElement, uploadBox?: HTMLElement | null) {
