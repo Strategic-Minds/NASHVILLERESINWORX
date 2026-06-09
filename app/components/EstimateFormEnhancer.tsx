@@ -7,7 +7,7 @@ const signUpScheduleImage = "https://cdn.shopify.com/s/files/1/0754/8905/0678/fi
 const prepWorkImage = "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-prep-work-garage-grinder-larger.png?v=1780969460";
 const baseCoatImage = "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-basecoat-jeremy-left-eden-spikes.png?v=1780971616";
 const beautyCoatImage = "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-beauty-coat-matched-gray-base.jpg?v=1780977611";
-const topcoatImage = "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-topcoat-eden-rolling-high-gloss-floor.jpg?v=1780981684";
+const topcoatImage = "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-topcoat-eden-rolling-car-angled.jpg?v=1780982466";
 
 export function EstimateFormEnhancer() {
   useEffect(() => {
@@ -16,7 +16,7 @@ export function EstimateFormEnhancer() {
     installProcessStepImage("Prep Work", prepWorkImage, "Nashville Resin Worx prep work garage with larger concrete grinder");
     installProcessStepImage("Base Coat", baseCoatImage, "Nashville Resin Worx base coat Jeremy and Eden wearing spike shoes");
     installProcessStepImage("Beauty Coat", beautyCoatImage, "Nashville Resin Worx beauty coat over matched warm gray epoxy base coat");
-    installProcessStepImage("Topcoat Finish", topcoatImage, "Nashville Resin Worx topcoat finish Eden rolling smooth high gloss metallic epoxy floor");
+    installProcessStepImage("Topcoat Finish", topcoatImage, "Nashville Resin Worx topcoat finish Eden rolling high gloss floor with angled sports car background");
 
     const form = document.querySelector<HTMLFormElement>("#estimate");
     const offerCard = document.querySelector<HTMLElement>(".offer-card");
