@@ -4,13 +4,13 @@ import { useEffect } from "react";
 
 const styleId = "nrw-estimate-enhancer-styles";
 const signUpScheduleImage = "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-sign-up-schedule-job.png?v=1780967924";
-const prepWorkImage = "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-prep-work-garage.png?v=1780968976";
+const prepWorkImage = "https://cdn.shopify.com/s/files/1/0754/8905/0678/files/nashville-resin-worx-prep-work-garage-grinder-larger.png?v=1780969460";
 
 export function EstimateFormEnhancer() {
   useEffect(() => {
     ensureEnhancerStyles();
     installProcessStepImage("Sign Up & Schedule Job", signUpScheduleImage, "Nashville Resin Worx sign up and schedule a job");
-    installProcessStepImage("Prep Work", prepWorkImage, "Nashville Resin Worx prep work garage concrete grinder");
+    installProcessStepImage("Prep Work", prepWorkImage, "Nashville Resin Worx prep work garage with larger concrete grinder");
 
     const form = document.querySelector<HTMLFormElement>("#estimate");
     const offerCard = document.querySelector<HTMLElement>(".offer-card");
