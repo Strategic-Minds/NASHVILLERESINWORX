@@ -4,12 +4,12 @@ import type { CSSProperties } from "react";
 const approvedSurfaceImage = brand.assets.brandPackBoard;
 
 const processSteps = [
-  { title: "Sign Up & Schedule Job", image: approvedSurfaceImage, points: ["Free estimate", "Floor visualizer", "Digital contract"] },
-  { title: "Prep Work", image: brand.assets.premiumSceneA, points: ["Grind and clean concrete", "Crack repair and patching", "Dust-free finish"] },
-  { title: "Base Coat", image: approvedSurfaceImage, points: ["Moisture tolerant", "Anti-crack membrane", "Flexible and durable"] },
-  { title: "Beauty Coat", image: brand.assets.visualMockup, points: ["Flake, metallic, or stain", "Faux concrete stains", "Natural concrete look"] },
-  { title: "Topcoat Finish", image: brand.assets.websiteMockup, points: ["Satin or high gloss", "Maximum durability", "Final clean walkthrough"] },
-  { title: "Final Inspection", image: brand.assets.finalInspection, points: ["Quality inspection", "Touch-up if needed", "100% satisfaction"] }
+  { title: "Sign Up & Schedule Job", image: brand.assets.processSignUp, points: ["Free estimate", "Floor visualizer", "Digital contract"] },
+  { title: "Prep Work", image: brand.assets.processPrepWork, points: ["Grind and clean concrete", "Crack repair and patching", "Dust-free finish"] },
+  { title: "Base Coat", image: brand.assets.processBaseCoat, points: ["Moisture tolerant", "Anti-crack membrane", "Flexible and durable"] },
+  { title: "Beauty Coat", image: brand.assets.processBeautyCoat, points: ["Flake, metallic, or stain", "Faux concrete stains", "Natural concrete look"] },
+  { title: "Topcoat Finish", image: brand.assets.processTopcoatFinish, points: ["Satin or high gloss", "Maximum durability", "Final clean walkthrough"] },
+  { title: "Final Inspection", image: brand.assets.processFinalInspection, points: ["Quality inspection", "Touch-up if needed", "100% satisfaction"] }
 ];
 
 const appSteps = [
